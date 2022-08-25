@@ -16,6 +16,7 @@ public class FilmManagerTest {
     FilmItem item9 = new FilmItem(9, "Довод", "фантастика", 2020);
     FilmItem item10 = new FilmItem(10, "Дом Gucci", "биография", 2021);
 
+
     @Test
     public void shouldAddFourFilms() {
         FilmManager manager = new FilmManager();
@@ -113,5 +114,22 @@ public class FilmManagerTest {
         FilmItem[] actual = manager.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindAllSix() {
+        FilmManager manager = new FilmManager(6);
+        manager.save(item1);
+        manager.save(item2);
+        manager.save(item3);
+        manager.save(item4);
+        manager.save(item5);
+        manager.save(item6);
+
+        FilmItem[] expected = {item1, item2, item3, item4, item5, item6};
+        FilmItem[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+
     }
 }
